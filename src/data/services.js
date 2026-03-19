@@ -52,7 +52,7 @@ export const services = [
 ]
 
 export const stats = [
-  { value: '7', label: 'Fundadores' },
+  { value: '6', label: 'Fundadores' },
   { value: '+50', label: 'Proyectos IA' },
   { value: '99%', label: 'Uptime' },
   { value: '24/7', label: 'Soporte' },
