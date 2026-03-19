@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Users, Rocket, Heart, Shield, Target, Zap } from 'lucide-react'
 import { founders, values } from '../data/team'
+import TeamCarousel from '../components/TeamCarousel'
 
 export default function About() {
   return (
@@ -40,7 +41,7 @@ export default function About() {
             transition={{ delay: 0.1 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold font-display mb-6"
           >
-            <span className="text-gradient">7 Fundadores.</span>
+            <span className="text-gradient">6 Fundadores.</span>
             <br />
             <span className="text-white">Una Misión.</span>
           </motion.h2>
@@ -57,12 +58,22 @@ export default function About() {
           </motion.p>
         </div>
 
+        {/* Team Carousel */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-20 -mx-4 sm:-mx-6 lg:-mx-8"
+        >
+          <TeamCarousel />
+        </motion.div>
+
         {/* Founders Grid */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4 mb-20"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-20"
         >
           {founders.map((founder, index) => (
             <motion.div

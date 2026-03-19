@@ -47,7 +47,7 @@ export default function Hero() {
           <Sparkles className="w-4 h-4 text-cyan-400" />
           <span className="text-sm text-slate-300">Elite Tech Squad</span>
           <span className="text-xs px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 font-medium">
-            7 Founders
+            6 Founders
           </span>
         </motion.div>
 
