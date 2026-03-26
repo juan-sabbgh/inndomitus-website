@@ -23,7 +23,31 @@ import {
   Package,
   RotateCcw
 } from 'lucide-react'
-import { postData, ENDPOINTS } from '../config/api'
+import { API_BASE_URL, ENDPOINTS } from '../config/api'
+
+// Mensajes de WhatsApp por escenario
+const whatsappMensajes = {
+  cobranza: {
+    pago_vencido: 'Hola, te contactamos de parte de nuestro equipo de cobranza. Tu factura venció hace 5 días. ¿Podemos ayudarte a regularizar tu pago hoy?',
+    plan_pagos: 'Hola, notamos que tienes un saldo pendiente. Queremos ofrecerte opciones de pago en cuotas que se adapten a ti. ¿Te interesa conocerlas?',
+    recordatorio_preventivo: 'Hola, te recordamos que tu próximo pago vence mañana. ¡Evita cargos adicionales pagando hoy! ¿Necesitas ayuda?',
+  },
+  marketing: {
+    promo_exclusiva: '🎉 ¡Hola! Como cliente VIP tienes un 30% de descuento exclusivo esperándote. Válido solo por 48 horas. ¿Te gustaría aprovecharlo?',
+    carrito_abandonado: 'Hola, vimos que dejaste productos en tu carrito. ¡Te ofrecemos envío gratis si completas tu compra hoy! ¿Quieres continuar?',
+    upgrade_plan: 'Hola, notamos que aprovechas mucho tu plan actual. Tenemos una opción mejorada con precio especial para ti. ¿Te cuento los detalles?',
+  },
+  atencion_cliente: {
+    estado_pedido: 'Hola, tu pedido #45821 está en camino. Aquí tienes el seguimiento en tiempo real. ¿Tienes alguna pregunta sobre tu entrega?',
+    problema_servicio: 'Hola, recibimos tu reporte sobre problemas con el servicio. Estamos revisando tu caso y te ayudaremos a resolverlo de inmediato.',
+    devolucion_producto: 'Hola, lamentamos que tu producto llegó dañado. Iniciamos el proceso de devolución por ti. ¿Prefieres reembolso o reposición del artículo?',
+  },
+}
+
+function sanitizarNumero(numero) {
+  // Elimina +, espacios, guiones y paréntesis
+  return numero.replace(/[\s+\-()]/g, '')
+}
 
 // Tipos de agentes disponibles
 const agentTypes = [
@@ -50,7 +74,7 @@ const agentTypes = [
     iconBg: 'bg-violet-500/20',
   },
   {
-    id: 'atencion',
+    id: 'atencion_cliente',
     title: 'Atención al Cliente',
     description: 'Soporte y resolución de dudas',
     icon: HeadphonesIcon,
@@ -80,7 +104,7 @@ const scenarios = {
       context: 'Cliente con deuda de $2,800 MXN - 3 meses',
     },
     {
-      id: 'recordatorio',
+      id: 'recordatorio_preventivo',
       title: 'Recordatorio Preventivo',
       description: 'Tu pago vence mañana. El agente te recuerda amablemente antes de que se generen cargos.',
       icon: AlertCircle,
@@ -126,7 +150,7 @@ const scenarios = {
       context: 'Reporte de servicio lento',
     },
     {
-      id: 'devolucion',
+      id: 'devolucion_producto',
       title: 'Devolución de Producto',
       description: 'El producto llegó dañado y necesitas devolverlo. El agente gestiona todo el proceso.',
       icon: RotateCcw,
@@ -178,12 +202,28 @@ export default function Demo() {
     setIsSubmitting(true)
 
     try {
-      await postData(ENDPOINTS.CONFIGURACION_AGENTE, {
+      const numero = sanitizarNumero(phoneNumber)
+
+      const body = {
+        numero,
         tipoAgente: selectedAgent,
         tipoEscenario: selectedScenario,
         canalContacto: selectedChannel,
-        numeroTelefono: phoneNumber,
+        ...(selectedChannel === 'chat' && {
+          mensaje: whatsappMensajes[selectedAgent]?.[selectedScenario] ?? 'Hola, te contactamos de parte de Inndomitus.',
+        }),
+      }
+
+      const res = await fetch(`${API_BASE_URL}${ENDPOINTS.CONFIGURACION_AGENTE}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
       })
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}))
+        throw new Error(err.mensaje || 'Error al enviar la solicitud')
+      }
 
       setIsSuccess(true)
 
