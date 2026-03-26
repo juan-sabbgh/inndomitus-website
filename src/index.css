@@ -4,23 +4,45 @@
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-display: 'Space Grotesk', system-ui, sans-serif;
 
-  --color-cyan-glow: #22d3ee;
-  --color-violet-glow: #a78bfa;
-  --color-emerald-glow: #34d399;
+  /* ── Backgrounds: dark charcoal (replaces slate-9xx/10xx) ── */
+  --color-slate-950: #13151A;
+  --color-slate-900: #181A1F;
+  --color-slate-800: #22252A;
+  --color-slate-700: #2D323A;
+  --color-slate-600: #3D444F;
+  --color-slate-500: #5A6375;
+  --color-slate-400: #8A96A8;
+  --color-slate-300: #B0BAC8;
 
-  --color-dark-950: #020617;
-  --color-dark-900: #0f172a;
-  --color-dark-800: #1e293b;
+  /* ── Primary accent: ice blue (replaces cyan) ── */
+  --color-cyan-300: #B8D0F8;
+  --color-cyan-400: #8AB4F8;
+  --color-cyan-500: #7CA1D8;
+  --color-cyan-600: #6488C0;
+
+  /* ── Secondary accent: muted steel blue (replaces violet) ── */
+  --color-violet-300: #C0D0EC;
+  --color-violet-400: #A0B8E0;
+  --color-violet-500: #8AAACE;
+
+  /* ── Tertiary: silver-steel (replaces emerald) ── */
+  --color-emerald-400: #B0C4D4;
+  --color-emerald-500: #90AABC;
+
+  /* Legacy tokens kept for reference */
+  --color-ice-blue: #8AB4F8;
+  --color-charcoal: #181A1F;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #020617;
+  background-color: #13151A;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: #020617;
+  background-color: #13151A;
+  color: #E6E9ED;
   overflow-x: hidden;
 }
 
@@ -28,75 +50,90 @@ body {
   font-family: var(--font-display);
 }
 
+/* ── Gradient text: ice blue shimmer ── */
 .text-gradient {
-  background: linear-gradient(135deg, #22d3ee 0%, #a78bfa 50%, #34d399 100%);
+  background: linear-gradient(135deg, #7CA1D8 0%, #8AB4F8 45%, #C8DCFF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-cyan {
-  background: linear-gradient(135deg, #22d3ee 0%, #67e8f9 100%);
+  background: linear-gradient(135deg, #7CA1D8 0%, #8AB4F8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-violet {
-  background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 100%);
+  background: linear-gradient(135deg, #8AAACE 0%, #A0B8E0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* ── Glow effects: ice blue ── */
 .glow-cyan {
-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3), 0 0 40px rgba(34, 211, 238, 0.2);
+  box-shadow: 0 0 24px rgba(138, 180, 248, 0.4), 0 0 48px rgba(138, 180, 248, 0.15);
 }
 
 .glow-violet {
-  box-shadow: 0 0 20px rgba(167, 139, 250, 0.3), 0 0 40px rgba(167, 139, 250, 0.2);
+  box-shadow: 0 0 20px rgba(160, 184, 224, 0.35), 0 0 40px rgba(160, 184, 224, 0.12);
 }
 
 .glow-emerald {
-  box-shadow: 0 0 20px rgba(52, 211, 153, 0.3), 0 0 40px rgba(52, 211, 153, 0.2);
+  box-shadow: 0 0 20px rgba(176, 196, 212, 0.3), 0 0 40px rgba(176, 196, 212, 0.1);
 }
 
+.glow-amber {
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.2), 0 0 40px rgba(251, 191, 36, 0.08);
+}
+
+.glow-pink {
+  box-shadow: 0 0 20px rgba(244, 114, 182, 0.2), 0 0 40px rgba(244, 114, 182, 0.08);
+}
+
+.glow-blue {
+  box-shadow: 0 0 20px rgba(138, 180, 248, 0.3), 0 0 40px rgba(138, 180, 248, 0.1);
+}
+
+/* ── Glassmorphism: warmer & darker ── */
 .glass {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(148, 163, 184, 0.1);
+  background: rgba(24, 26, 31, 0.75);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(230, 233, 237, 0.08);
 }
 
 .glass-card {
-  background: rgba(15, 23, 42, 0.4);
+  background: rgba(34, 37, 42, 0.55);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(148, 163, 184, 0.08);
+  border: 1px solid rgba(230, 233, 237, 0.06);
 }
 
-/* Animated gradient background */
+/* ── Animated gradient background ── */
 .animated-gradient {
-  background: linear-gradient(-45deg, #0f172a, #1e1b4b, #0f172a, #134e4a);
+  background: linear-gradient(-45deg, #13151A, #181A1F, #1A1E26, #22252A);
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 18s ease infinite;
 }
 
 @keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Grid pattern overlay */
+/* ── Subtle grid overlay ── */
 .grid-pattern {
   background-image:
-    linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
+    linear-gradient(rgba(138, 180, 248, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(138, 180, 248, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
 
-/* Noise texture */
+/* ── Noise texture ── */
 .noise {
   position: relative;
 }
@@ -106,6 +143,17 @@ body {
   position: absolute;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.02;
+  opacity: 0.018;
   pointer-events: none;
+}
+
+/* ── Logo glow (used in Hero) ── */
+.logo-glow {
+  filter: drop-shadow(0 0 32px rgba(138, 180, 248, 0.25))
+          drop-shadow(0 0 80px rgba(138, 180, 248, 0.1));
+}
+
+/* ── Bottom light sweep (replicates logo's floor glow) ── */
+.floor-glow {
+  background: radial-gradient(ellipse 70% 30% at 50% 100%, rgba(138, 180, 248, 0.12), transparent);
 }

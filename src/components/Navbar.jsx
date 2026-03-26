@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X, Sparkles } from 'lucide-react'
+import logo from '../logo.jpeg'
 
 const navLinks = [
   { name: 'Servicios', href: '#servicios' },
   { name: 'Demo', href: '#demo' },
   { name: 'Nosotros', href: '#nosotros' },
+  { name: 'Agente IA', href: '#agente' },
   { name: 'Contacto', href: '#contacto' },
 ]
 
@@ -35,10 +37,12 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 via-violet-500 to-emerald-400 flex items-center justify-center font-bold text-xl text-slate-950 group-hover:scale-105 transition-transform">
-              I
-            </div>
+          <a href="#" className="flex items-center gap-2.5 group">
+            <img
+              src={logo}
+              alt="Inndomitus"
+              className="w-9 h-9 object-contain group-hover:scale-105 transition-transform"
+            />
             <span className="text-xl font-bold font-display tracking-tight">
               <span className="text-gradient">Inndomitus</span>
             </span>
@@ -57,7 +61,7 @@ export default function Navbar() {
             ))}
             <a
               href="#contacto"
-              className="group relative px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-sm font-semibold text-white overflow-hidden transition-all hover:shadow-lg hover:shadow-cyan-500/25"
+              className="group relative px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-600 to-cyan-400 text-sm font-semibold text-slate-950 overflow-hidden transition-all hover:shadow-lg hover:shadow-cyan-400/30"
             >
               <span className="relative z-10 flex items-center gap-2">
                 <Sparkles className="w-4 h-4" />
@@ -98,7 +102,7 @@ export default function Navbar() {
               <a
                 href="#contacto"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 text-sm font-semibold text-white"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-600 to-cyan-400 text-sm font-semibold text-slate-950"
               >
                 <Sparkles className="w-4 h-4" />
                 Hablemos
