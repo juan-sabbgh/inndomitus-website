@@ -205,7 +205,7 @@ export default function Demo() {
       const numero = sanitizarNumero(phoneNumber)
 
       const body = {
-        numero,
+        numeroTelefono: numero,
         tipoAgente: selectedAgent,
         tipoEscenario: selectedScenario,
         canalContacto: selectedChannel,
