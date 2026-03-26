@@ -9,6 +9,8 @@ export const API_BASE_URL = 'https://inndomitus-back.vercel.app'
 export const ENDPOINTS = {
   FORMULARIO_CONTACTO: '/api/formulario-contacto',
   CONFIGURACION_AGENTE: '/api/configuracion-agente',
+  WHATSAPP_ENVIAR: '/api/whatsapp/enviar-mensaje',
+  VOZ_LLAMADA: '/api/voz/iniciar-llamada',
 }
 
 // Función helper para hacer peticiones POST
