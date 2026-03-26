@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react'
+import logo from '../logo.jpeg'
 
 const socialLinks = [
   { name: 'LinkedIn', icon: Linkedin, href: '#' },
@@ -27,10 +28,8 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <a href="#" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 via-violet-500 to-emerald-400 flex items-center justify-center font-bold text-xl text-slate-950">
-                I
-              </div>
+            <a href="#" className="flex items-center gap-2.5 mb-4">
+              <img src={logo} alt="Inndomitus" className="w-9 h-9 object-contain" />
               <span className="text-xl font-bold font-display text-gradient">
                 Inndomitus
               </span>
