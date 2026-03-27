@@ -134,7 +134,7 @@ const scenarios = {
       context: 'Cliente con alto uso mensual',
     },
   ],
-  atencion: [
+  atencion_cliente: [
     {
       id: 'estado_pedido',
       title: 'Estado de Pedido',
@@ -161,12 +161,6 @@ const scenarios = {
 
 // Canales de comunicación
 const channels = [
-  {
-    id: 'voice',
-    title: 'Llamada',
-    description: 'Recibe una llamada del agente IA',
-    icon: Mic,
-  },
   {
     id: 'chat',
     title: 'WhatsApp',
@@ -547,7 +541,7 @@ export default function Demo() {
                         Elige tu canal preferido
                       </p>
 
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="flex justify-center">
                         {channels.map((channel) => {
                           const Icon = channel.icon
                           return (
