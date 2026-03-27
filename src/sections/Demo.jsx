@@ -134,7 +134,7 @@ const scenarios = {
       context: 'Cliente con alto uso mensual',
     },
   ],
-  atencion: [
+  atencion_cliente: [
     {
       id: 'estado_pedido',
       title: 'Estado de Pedido',
